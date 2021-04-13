@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">SpellIT</string>
+
+    <!-- Questions -->
+    <string name="first_question">Тут должна быть представлена аудиозапись, однако пока что их нет, как и базы с сервером, где они хранятся :( Ответьте пока что просто "Да"</string>
+    <string name="second_question">Тут вообще должно быть много всего… Ну ничего, скоро всё появится. Ответьте да)</string>
+
+    <!-- Answers -->
+    <string name="true_button">Да</string>
+    <string name="false_button">Нееет</string>
+
+    <!-- Functional -->
+    <string name="next_button">Го некст</string>
+
+    <!-- Toasts -->
+    <string name="correct_toast">Вау, как вы угадали?</string>
+    <string name="incorrect_toast">Мда, просил же "Да" отвечать…</string>
+
+</resources>
