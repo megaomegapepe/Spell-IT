@@ -7,6 +7,7 @@ import application.spellit.dataclasses.Question
 class MainActivityViewModel : ViewModel() {
 
     private var currentIndexOfQuestion = 0
+    private var isCheater = false
 
     private val questions = listOf(
         Question(R.string.first_question, true),
@@ -28,6 +29,14 @@ class MainActivityViewModel : ViewModel() {
 
     fun setCurrentIndex(index: Int) {
         this.currentIndexOfQuestion = index
+    }
+
+    fun setisCheater(isCheater: Boolean) {
+        this.isCheater = isCheater
+    }
+
+    fun getIsCheater(): Boolean {
+        return this.isCheater
     }
 
 

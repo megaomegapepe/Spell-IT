@@ -1,5 +1,8 @@
 package application.spellit
 
+import android.app.Activity
+import android.app.ActivityOptions
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,12 +14,14 @@ import androidx.lifecycle.ViewModelProvider
 import application.spellit.viewmodels.MainActivityViewModel
 
 private const val KEY_INDEX = "index"
+private const val REQUEST_CODE_CHEAT = 0
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var trueButton: Button
     private lateinit var falseButton: Button
     private lateinit var nextButton: Button
+    private lateinit var cheatButton: Button
     private lateinit var questionTextView: TextView
 
     private val viewModel: MainActivityViewModel by lazy {
@@ -34,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         trueButton = findViewById(R.id.true_button)
         falseButton = findViewById(R.id.false_button)
         nextButton = findViewById(R.id.next_button)
+        cheatButton = findViewById(R.id.cheat_button)
         questionTextView = findViewById(R.id.question_text_view)
         questionTextView.setText(R.string.first_question)
 
@@ -46,6 +52,15 @@ class MainActivity : AppCompatActivity() {
             viewModel.nextQuestion()
             questionTextView.setText(viewModel.getQuestion().textResId)
         }
+
+        cheatButton.setOnClickListener { view: View ->
+            val answer = viewModel.getQuestion().answer
+            val intent = CheatActivity.newIntent(this@MainActivity, answer)
+            val options =
+                ActivityOptions.makeClipRevealAnimation(view, 0, 0, view.width, view.height)
+            startActivityForResult(intent, REQUEST_CODE_CHEAT, options.toBundle())
+
+        }
     }
 
     //Override for save data after android kill application process
@@ -53,6 +68,15 @@ class MainActivity : AppCompatActivity() {
         super.onSaveInstanceState(savedInstanceState)
         Log.i("MainActivity", "call onSaveInstance")
         savedInstanceState.putInt(KEY_INDEX, viewModel.getCurrentIndex())
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode != Activity.RESULT_OK) return
+        if (requestCode == REQUEST_CODE_CHEAT) {
+            viewModel.setisCheater(true)
+        }
     }
 
     private fun checkUserAnswer(userAnswer: Boolean) {
