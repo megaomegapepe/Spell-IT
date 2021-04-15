@@ -16,4 +16,13 @@
     <string name="correct_toast">Вау, как вы угадали?</string>
     <string name="incorrect_toast">Мда, просил же "Да" отвечать…</string>
 
+<<<<<<< HEAD
+    <string name="warning_text">Ахтунг!</string>
+    <string name="show_answer_button">Показать ответ</string>
+
+    <string name="cheat_button">Читерство</string>
+
+
+=======
+>>>>>>> main
 </resources>
