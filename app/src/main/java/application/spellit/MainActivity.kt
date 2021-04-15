@@ -1,8 +1,11 @@
 package application.spellit
 
+<<<<<<< HEAD
 import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Intent
+=======
+>>>>>>> main
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -14,14 +17,20 @@ import androidx.lifecycle.ViewModelProvider
 import application.spellit.viewmodels.MainActivityViewModel
 
 private const val KEY_INDEX = "index"
+<<<<<<< HEAD
 private const val REQUEST_CODE_CHEAT = 0
+=======
+>>>>>>> main
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var trueButton: Button
     private lateinit var falseButton: Button
     private lateinit var nextButton: Button
+<<<<<<< HEAD
     private lateinit var cheatButton: Button
+=======
+>>>>>>> main
     private lateinit var questionTextView: TextView
 
     private val viewModel: MainActivityViewModel by lazy {
@@ -39,7 +48,10 @@ class MainActivity : AppCompatActivity() {
         trueButton = findViewById(R.id.true_button)
         falseButton = findViewById(R.id.false_button)
         nextButton = findViewById(R.id.next_button)
+<<<<<<< HEAD
         cheatButton = findViewById(R.id.cheat_button)
+=======
+>>>>>>> main
         questionTextView = findViewById(R.id.question_text_view)
         questionTextView.setText(R.string.first_question)
 
@@ -52,6 +64,7 @@ class MainActivity : AppCompatActivity() {
             viewModel.nextQuestion()
             questionTextView.setText(viewModel.getQuestion().textResId)
         }
+<<<<<<< HEAD
 
         cheatButton.setOnClickListener { view: View ->
             val answer = viewModel.getQuestion().answer
@@ -61,6 +74,8 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, REQUEST_CODE_CHEAT, options.toBundle())
 
         }
+=======
+>>>>>>> main
     }
 
     //Override for save data after android kill application process
@@ -70,6 +85,7 @@ class MainActivity : AppCompatActivity() {
         savedInstanceState.putInt(KEY_INDEX, viewModel.getCurrentIndex())
     }
 
+<<<<<<< HEAD
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -79,6 +95,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+=======
+>>>>>>> main
     private fun checkUserAnswer(userAnswer: Boolean) {
         if (viewModel.getQuestion().answer == userAnswer) Toast.makeText(
             this,
